@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# You can add specific disallow rules here if needed
+# For example:
+# Disallow: /admin/
+# Disallow: /private/
+
+Sitemap: https://www.derivetech.com/sitemap.xml
+Sitemap: https://www.derivetech.com/sitemap-index.xml

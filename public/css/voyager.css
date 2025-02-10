@@ -1,0 +1,129 @@
+.form-group>label.display-block,
+.panel-body>.form-group>label {
+    color: #000;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.readmore {
+    height: 105px !important;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+}
+
+.readm-link {
+    display: none;
+}
+
+.tabs {
+    margin: 0 auto 0 30px;
+}
+
+.tabs>section {
+    display: none;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.tabs>section>p {
+    margin: 0 0 5px;
+    line-height: 1.5;
+    color: #383838;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.tabs>input {
+    display: none;
+    position: absolute;
+}
+
+.tabs>label {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #aaa;
+    border: 0 solid #ddd;
+    border-width: 1px 1px 1px 1px;
+    background: #f1f1f1;
+    border-radius: 3px 3px 0 0;
+}
+
+.tabs>label:before {
+    font-family: fontawesome;
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.tabs>label:hover {
+    color: #888;
+    cursor: pointer;
+}
+
+.tabs>input:checked+label {
+    color: #555;
+    border-top: 1px solid #093;
+    border-bottom: 1px solid #fff;
+    background: #fff;
+}
+
+#tab0:checked~#content-tab0,
+#tab10:checked~#content-tab10,
+#tab11:checked~#content-tab11,
+#tab12:checked~#content-tab12,
+#tab13:checked~#content-tab13,
+#tab14:checked~#content-tab14,
+#tab15:checked~#content-tab15,
+#tab16:checked~#content-tab16,
+#tab1:checked~#content-tab1,
+#tab20:checked~#content-tab20,
+#tab2:checked~#content-tab2,
+#tab30:checked~#content-tab30,
+#tab31:checked~#content-tab31,
+#tab32:checked~#content-tab32,
+#tab33:checked~#content-tab33,
+#tab34:checked~#content-tab34,
+#tab35:checked~#content-tab35,
+#tab3:checked~#content-tab3,
+#tab40:checked~#content-tab40,
+#tab4:checked~#content-tab4,
+#tab5:checked~#content-tab5,
+#tab6:checked~#content-tab6,
+#tab7:checked~#content-tab7,
+#tab8:checked~#content-tab8,
+#tab9:checked~#content-tab9 {
+    display: block;
+}
+
+.ui-sortable-placeholder {
+    height: 130px !important;
+}
+
+.sort_pointer {
+    vertical-align: middle !important;
+    padding: 0 25px !important;
+}
