@@ -208,7 +208,8 @@ const ListTab = ({ data, baseUrl }) => {
           alt=""
           className="section-title-line wow fadeInLeft"
           data-wow-duration="1.2s"
-          layout="fill"
+          width={718}
+          height={182}
         />
       </div>
 

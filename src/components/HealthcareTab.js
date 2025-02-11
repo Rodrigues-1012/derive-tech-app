@@ -12,7 +12,8 @@ const HealthcareTab = ({ data, baseUrl }) => {
           alt=""
           className="section-title-line wow fadeInLeft"
           data-wow-duration="1.2s"
-          layout="fill"
+          width={480}
+          height={121}
         />
       </div>
       <div className="healthcare">
@@ -53,7 +54,8 @@ const HealthcareTab = ({ data, baseUrl }) => {
         data-wow-duration="1.9s"
         data-wow-offset="200"
         loading={"lazy"}
-        layout="fill"
+        width={226}
+        height={447}
       />
       <Image
         src="/img/decor-3.png"
@@ -61,7 +63,8 @@ const HealthcareTab = ({ data, baseUrl }) => {
         loading={"lazy"}
         className="healthcare-decor healthcare-decor--bottom wow fadeInUp"
         data-wow-duration="1.5s"
-        layout="fill"
+        width={1007}
+        height={741}
       />
     </section>
   );

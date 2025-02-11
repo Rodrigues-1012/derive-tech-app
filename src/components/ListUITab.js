@@ -35,7 +35,8 @@ const ListUITab = ({ data, baseUrl, page }) => {
           src="/img/title-line.png"
           alt=""
           className="section-title-line wow fadeInLeft"
-          layout="fill"
+          width={718}
+          height={182}
         />
       </div>
 
@@ -85,6 +86,7 @@ const ListUITab = ({ data, baseUrl, page }) => {
                           className="services-image wow fadeInUp"
                           data-wow-duration="1.5s"
                           layout="fill"
+                          objectFit="cover"
                         />
                       </div>
                       <div className="col-lg-5 col-xl-4">

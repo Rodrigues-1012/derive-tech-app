@@ -35,13 +35,15 @@ const HomeBanner = ({ data, baseUrl }) => {
           </div>
         </div>
       </div>
-      <Image
-        src="/img/decor-1.png"
-        alt=""
-        className="banner-decor wow fadeInLeft"
-        data-wow-offset="300"
-        layout="fill"
-      />
+      <div className="banner-decor wow fadeInLeft">
+        <Image
+          src="/img/decor-1.png"
+          alt=""
+          data-wow-offset="300"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
     </div>
   );
 };

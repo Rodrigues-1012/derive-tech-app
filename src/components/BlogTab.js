@@ -168,7 +168,8 @@ const BlogTab = ({ data, baseUrl }) => {
           src="/img/title-line.png"
           alt=""
           className="section-title-line wow fadeInLeft"
-          layout="fill"
+          width={480}
+          height={121}
         />
 
         <div className="partners">

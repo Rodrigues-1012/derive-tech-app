@@ -89,7 +89,13 @@ const AccreditationTab = ({ data, baseUrl }) => {
                 : ""
             }
           >
-            <Slider style={{ position: "relative", zIndex: 100 }} {...settings}>
+            <Slider
+              style={{
+                position: "relative",
+                zIndex: 100,
+              }}
+              {...settings}
+            >
               {data?.subSection?.map((item) => {
                 return (
                   <div key={item.id} className="item wow zoomIn ">
@@ -147,7 +153,8 @@ const AccreditationTab = ({ data, baseUrl }) => {
         src={`${baseUrl}/${data?.backgroundImage}`}
         alt=""
         className="accreditation-decor wow fadeInRight"
-        layout="fill"
+        width={1042}
+        height={574}
       />
     </section>
   );

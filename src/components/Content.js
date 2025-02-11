@@ -295,12 +295,14 @@ const Content = ({ data, baseUrl, route }) => {
             </div>
           </div>
         </div>
-        <Image
-          src={`${baseUrl}/${data?.backgroundImage}`}
-          alt=""
-          className="accreditation-decor wow fadeInRight"
-          layout="fill"
-        />
+        {data?.backgroundImage && (
+          <Image
+            src={`${baseUrl}/${data?.backgroundImage}`}
+            alt=""
+            className="accreditation-decor wow fadeInRight"
+            layout="fill"
+          />
+        )}
       </section>
     );
   }
