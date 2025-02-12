@@ -17,6 +17,7 @@ const CustomMetadataHead = ({ title, description, keywords, image, url }) => (
     <meta property="og:url" content={url} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:domain" content={url} />
+    <meta name="twitter:site" content="@DeriveTechnolo2" />
     <meta property="twitter:url" content={url} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
