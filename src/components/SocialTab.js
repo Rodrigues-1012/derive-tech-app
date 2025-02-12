@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 
 const SocialTab = ({ data }) => {
   const router = useRouter();
-  const baseUrl = `${window.location.origin}${router.asPath}`; // Construa a URL completa
+  const baseUrl = `${process.env.NEXT_PUBLIC_WEB_APP_URL}${router.asPath}`; // Construa a URL completa
+  console.log(baseUrl);
 
   return (
     <div className="container">
@@ -12,28 +13,28 @@ const SocialTab = ({ data }) => {
         <div className="testimonials-article-bottom">
           <div className="testimonials-article-social">
             <Link
-              href={`mailto:?subject=${data?.title}&body=${baseUrl}${data?.anchor}`}
+              href={`mailto:?subject=${data?.title}&body=${baseUrl}`}
               target="_blank"
               title="Share via Email"
             >
               <i className="fas fa-share-alt" />
             </Link>
             <Link
-              href={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}${data?.anchor}`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
               target="_blank"
               title="Share on Facebook"
             >
               <i className="fab fa-facebook-f" />
             </Link>
             <Link
-              href={`https://twitter.com/intent/tweet?url=${baseUrl}${data?.anchor}`}
+              href={`https://twitter.com/intent/tweet?url=${baseUrl}`}
               target="_blank"
               title="Share on Twitter"
             >
               <i className="fab fa-twitter" />
             </Link>
             <Link
-              href={`http://www.linkedin.com/shareArticle?mini=true&url=${baseUrl}${data?.anchor}`}
+              href={`http://www.linkedin.com/shareArticle?mini=true&url=${baseUrl}`}
               target="_blank"
               title="Share on LinkedIn"
             >

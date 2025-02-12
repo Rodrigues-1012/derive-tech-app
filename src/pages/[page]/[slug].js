@@ -22,6 +22,7 @@ import SubscribeTab from "@/components/SubscribeTab";
 import Tabs from "@/components/Tabs";
 import VerticalTab from "@/components/VerticalTab";
 import { data } from "jquery";
+import CustomMetadataHead from "@/components/CustomMetadataHead";
 
 const Slug = ({ page, slug }) => {
   // console.log("slug", slug, page);
@@ -32,7 +33,11 @@ const Slug = ({ page, slug }) => {
     isError,
   } = useQueryHooks(`page/${page}/${slug}`);
 
+  console.log("data:");
   console.log(slugData);
+
+  const editedUrl = process.env.NEXT_PUBLIC_WEB_APP_URL + "/" + slugData?.route;
+
   useEffect(() => {
     $(window).outerWidth() > 767 &&
       $(".text-scroll").mCustomScrollbar({ theme: "dark-thin" });
@@ -48,11 +53,12 @@ const Slug = ({ page, slug }) => {
 
   return (
     <>
-      <Head>
-        <title>{slug + " | " + slugData?.metaTitle}</title>
-        <meta name="description" content={slugData?.metaDescription} />
-        <meta name="keywords" content={slugData?.metaKeywords} />
-      </Head>
+      <CustomMetadataHead
+        title={slugData?.metaTitle}
+        description={slugData?.metaDescription}
+        keywords={slugData?.metaKeywords}
+        url={editedUrl}
+      />
 
       <Layout>
         {slugData?.section.map((item) => {
