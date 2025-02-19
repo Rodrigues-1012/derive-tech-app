@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  distDir: "_next",
   images: {
     domains: ["phpstack-611111-5274251.cloudwaysapps.com"],
   },
