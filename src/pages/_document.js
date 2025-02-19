@@ -9,7 +9,7 @@
 //         <Head>
 //           <meta name="viewport" content="width=device-width, initial-scale=1" />
 //           <link rel="icon" href="/favicon.ico" />
-//           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+//           <meta httpEquiv="Content-Type" content="text/html;charSet=utf-8" />
 //           <meta
 //             name="viewport"
 //             content="width=device-width, initial-scale=1, user-scalable=no"
@@ -114,7 +114,7 @@
 //           <link
 //             rel="stylesheet"
 //             type="text/css"
-//             charset="UTF-8"
+//            charSet="UTF-8"
 //             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
 //           />
 //           <link
@@ -160,25 +160,21 @@ class CustomDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <title>
-            Derive Technologies |{" "}
-            {ogTitle || "Enterprise IT Support & Services Provider"}
-          </title>
           <link rel="icon" href="/favicon.ico" />
           <link
             rel="shortcut icon"
             href="https://www.derivetech.com/favicon.ico"
             type="image/x-icon"
           />
-          <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+          {/* <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> */}
           <meta
             property="google-site-verification"
             content="6RigxzoAYCllNfaTJNli5zX9W6PsTRCecp7rfy4i-Tw"
           />
-          <meta
+          {/* <meta
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no"
-          />
+          /> */}
           <meta name="format-detection" content="telephone=no" />
           <meta name="keywords" content="Home page" />
 
@@ -355,12 +351,12 @@ class CustomDocument extends Document {
           <script
             src="//js.hsforms.net/forms/embed/v2.js"
             type="text/javascript"
-            charset="utf-8"
+            charSet="utf-8"
           ></script>
           <script
             src="//js.hs-scripts.com/39624325.js"
             type="text/javascript"
-            charset="utf-8"
+            charSet="utf-8"
           ></script>
           {/* <!-- Google Tag Manager (noscript) --> */}
           <noscript>
