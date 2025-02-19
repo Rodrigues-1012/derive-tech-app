@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ["phpstack-611111-5274251.cloudwaysapps.com"],
+    domains: ["phpstack-611111-4140859.cloudwaysapps.com"],
   },
 
   publicRuntimeConfig: {
