@@ -14,29 +14,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up SSH for connection to VM
+      # Step 2: Set up SSH for connection
       - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          echo "${{ secrets.SSH_PASSPHRASE }}" | ssh-add ~/.ssh/id_rsa
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
       # Step 3: Deploy to GCP VM
       - name: Deploy to GCP VM
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} << 'EOF'
-          # Navigate directly to the derive-tech-app folder
           cd ~/derive-tech-app
-
-          # Pull the latest changes from the repository
           git pull origin main
-
-          # Install dependencies
           npm install
-
-          # Build the app
           npm run build
-
-          # Start or reload the app using PM2
           pm2 reload app || pm2 start npm --name "app" -- start
           EOF
         env:
