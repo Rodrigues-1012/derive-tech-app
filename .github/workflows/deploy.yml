@@ -22,7 +22,7 @@ jobs:
 
       - name: Authenticate with GCP
         run: |
-          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > gcp-key.json
+          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" | base64 -d > gcp-key.json
           ./google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=gcp-key.json
           ./google-cloud-sdk/bin/gcloud config set project your-project-id
 
