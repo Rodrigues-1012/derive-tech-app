@@ -1,20 +1,16 @@
-#DirectoryIndex disabled
+# DirectoryIndex disabled
 
 # Redirect traffic to your port 3040
-
 RewriteEngine On
 RewriteBase /
-RewriteRule ^(.\*)?$ http://127.0.0.1:3040/$1 [P,L]
+RewriteRule ^(.*)?$ http://127.0.0.1:3040/$1 [P,L]
 
-## Ensure all non-canonical versions of your homepage
+# Remove HTTPS redirection for now
+# Commented out the HTTPS enforcement rule
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://www.derivetech.com/$1 [L,R=301]
 
-RewriteCond %{HTTP_HOST} ^derivetech\.com [NC]
-RewriteRule ^(.\*)$ https://www.derivetech.com/$1 [L,R=301]
-
-RewriteCond %{HTTPS} off
-RewriteRule ^(.\*)$ https://www.derivetech.com/$1 [L,R=301]
-
-##CACHE
+## CACHE
 <IfModule mod_expires.c>
 ExpiresActive On
 ExpiresDefault "access plus 1 year"
@@ -43,5 +39,4 @@ ExpiresDefault "access plus 1 year"
     # Disable caching for dynamic pages
     Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
     Header set Pragma "no-cache"
-
 </IfModule>
