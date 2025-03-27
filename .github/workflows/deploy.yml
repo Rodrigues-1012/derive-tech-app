@@ -3,7 +3,7 @@ name: CI/CD Deployment to GCP VM
 on:
   push:
     branches:
-      - master # Trigger the workflow on pushes to the main branch
+      - master # Triggdddderfdd the workflow on pushes #to the main branch
 
 jobs:
   deploy:
@@ -27,20 +27,19 @@ jobs:
           credentials_json: "${{ secrets.GCP_SA_KEY }}"
           project_id: ${{ env.PROJECT_ID }}
 
-      # - name: Set Up Google Cloud CLI
-      #   run: |
-      #     curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-419.0.0-linux-x86_64.tar.gz
-      #     tar -xvf google-cloud-cli-419.0.0-linux-x86_64.tar.gz
-      #     ./google-cloud-sdk/install.sh
-      #     ./google-cloud-sdk/bin/gcloud --version
+      - name: Set Up Google Cloud CLI
+        run: |
+          curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-419.0.0-linux-x86_64.tar.gz
+          tar -xvf google-cloud-cli-419.0.0-linux-x86_64.tar.gz
+          ./google-cloud-sdk/install.sh
+          ./google-cloud-sdk/bin/gcloud --version
 
       - name: Deploy Application
         run: |
-          GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' \
-          git pull origin master
           ./google-cloud-sdk/bin/gcloud compute ssh fausto@derive-web-staging --zone=us-central1-f --command "
           cd derive-tech-app
+          git pull origin main
           npm install
           npm run build
-          pm2 start 'new-app'' || start npm --name 'new-app' -- start
+          pm2 start npm --name "latest-derive" -- start
           "
