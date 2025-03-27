@@ -3,7 +3,7 @@ name: CI/CD Deployment to GCP VM
 on:
   push:
     branches:
-      - master # Trigger on pushes to the main branch
+      - master # Trigger the workflow on pushes to the main branch
 
 jobs:
   deploy:
@@ -12,30 +12,26 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # Ensure the full commit history is fetched
 
-      - name: Start SSH Agent
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Provide SSH Passphrase
+      - name: Set Up Google Cloud CLI
         run: |
-          echo "${{ secrets.SSH_PASSPHRASE }}" | ssh-add -
-        env:
-          SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
+          curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-419.0.0-linux-x86_64.tar.gz
+          tar -xvf google-cloud-cli-419.0.0-linux-x86_64.tar.gz
+          ./google-cloud-sdk/install.sh
+          ./google-cloud-sdk/bin/gcloud --version
 
-      - name: Verify SSH Agent
-        run: ssh-add -l # Verifies the private key is loaded correctly
-
-      - name: Deploy Application to VM
+      - name: Authenticate with GCP
         run: |
-          ssh -o StrictHostKeyChecking=no username@your-vm-ip << EOF
-          set -e  # Exit immediately if a command exits with a non-zero status
-          cd derive-tech-app  # Navigate to your project directory
-          git pull origin main  # Pull the latest code from the repository
-          npm install  # Install dependencies
-          npm run build  # Build your application
-          pm2 restart process_name  # Restart your application using PM2
-          EOF
+          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > gcp-key.json
+          ./google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=gcp-key.json
+          ./google-cloud-sdk/bin/gcloud config set project your-project-id
+
+      - name: Deploy Application
+        run: |
+          ./google-cloud-sdk/bin/gcloud compute ssh username@your-vm-name --command "
+          cd derive-tech-app
+          git pull origin main
+          npm install
+          npm run build
+          pm2 start npm --name "new-app" -- start
+          "
