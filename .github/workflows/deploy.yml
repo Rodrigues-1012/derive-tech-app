@@ -34,5 +34,5 @@ jobs:
           git pull https://estesfausto:${{ secrets.GITHUB_PAT }}@github.com/estesfausto/derive-tech-app.git master
           npm install
           npm run build
-          pm2 start npm --name 'latest-derive' -- start
+          pm2 restart 'cicd-derive' || pm2 start npm --name 'cicd-derive' 
           "
