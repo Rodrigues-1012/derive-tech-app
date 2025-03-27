@@ -12,7 +12,6 @@ const MainFooter = () => {
 
   return (
     <footer className="footer">
-      <p style={{ color: "red" }}>HAHAHAHAHA</p>
       <div className="row">
         {CompanyInfo.data?.length > 0 && (
           <div className="col-sm-11 col-lg-4">
