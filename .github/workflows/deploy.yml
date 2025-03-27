@@ -1,0 +1,48 @@
+name: Deploy to GCP VM
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js for tests and builds
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      # Step 3: Install dependencies and build the app
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build application
+        run: npm run build
+
+      # Step 4: Set up SSH
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # Step 5: Deploy to VM via SSH
+      - name: Deploy to VM
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} << 'EOF'
+          cd derive-tech-app || exit
+          git pull origin main
+          npm install
+          npm run build
+          pm2 reload app || pm2 start npm --name "app" -- start
+          EOF
+    env:
+      VM_IP: ${{ secrets.VM_IP }}
+      VM_USER: ${{ secrets.VM_USER }}
