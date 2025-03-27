@@ -7,8 +7,8 @@ RewriteRule ^(.*)?$ http://127.0.0.1:3000/$1 [P,L]
 
 # Remove HTTPS redirection for now
 # Commented out the HTTPS enforcement rule
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://www.derivetech.com/$1 [L,R=301]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://www.derivetech.com/$1 [L,R=301]
 
 ## CACHE
 <IfModule mod_expires.c>
