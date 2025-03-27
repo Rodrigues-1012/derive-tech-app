@@ -1,9 +1,9 @@
 # DirectoryIndex disabled
 
 # Redirect traffic to your port 3040 ##
-# RewriteEngine On
-# RewriteBase /
-# RewriteRule ^(.*)?$ http://127.0.0.1:3040/$1 [P,L]
+RewriteEngine On
+RewriteBase /
+RewriteRule ^(.*)?$ http://127.0.0.1:3000/$1 [P,L]
 
 # Remove HTTPS redirection for now
 # Commented out the HTTPS enforcement rule
