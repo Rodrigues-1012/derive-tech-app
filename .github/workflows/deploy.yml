@@ -26,14 +26,6 @@ jobs:
           ./google-cloud-sdk/install.sh
           ./google-cloud-sdk/bin/gcloud --version
 
-      - name: Clear Application Folder
-        run: |
-          ./google-cloud-sdk/bin/gcloud compute ssh fausto@derive-web-staging --zone=us-central1-f --command "
-          cd derive-tech-app
-          rm -rf *
-          echo 'All files in derive-tech-app folder have been deleted.'
-          "
-
       - name: Deploy Application
         run: |
           ./google-cloud-sdk/bin/gcloud compute ssh fausto@derive-web-staging --zone=us-central1-f --command "
