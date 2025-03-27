@@ -31,7 +31,7 @@ jobs:
           ./google-cloud-sdk/bin/gcloud compute ssh fausto@derive-web-staging --zone=us-central1-f --command "
           cd derive-tech-app
           git config --global credential.helper store
-          git pull https://estesfausto:${{ secrets.GITHUB_PAT }}@github.com/estesfausto/derive-tech-app.git main
+          git pull https://estesfausto:${{ secrets.GITHUB_PAT }}@github.com/estesfausto/derive-tech-app.git master
           npm install
           npm run build
           pm2 start npm --name 'latest-derive' -- start
