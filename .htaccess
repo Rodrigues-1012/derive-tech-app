@@ -1,6 +1,6 @@
 # DirectoryIndex disabled
 
-# Redirect traffic to your port 3040
+# Redirect traffic to your port 3040 ##
 RewriteEngine On
 RewriteBase /
 RewriteRule ^(.*)?$ http://127.0.0.1:3040/$1 [P,L]
