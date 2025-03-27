@@ -24,7 +24,7 @@ export default function Home() {
     <>
       <Head>
         <title>
-          Derive Technologies WAZZZAAAAAA |{" "}
+          Derive Technologies |{" "}
           {pageData?.metaTitle || "Enterprise IT Support & Services Provider"}
         </title>
         <meta name="description" content={pageData?.metaDescription} />
