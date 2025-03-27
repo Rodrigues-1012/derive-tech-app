@@ -24,14 +24,13 @@ export default function Home() {
     <>
       <Head>
         <title>
-          Derive Technologies |{" "}
+          Derive Technologies WASAAAA |{" "}
           {pageData?.metaTitle || "Enterprise IT Support & Services Provider"}
         </title>
         <meta name="description" content={pageData?.metaDescription} />
         <meta name="keywords" content={pageData?.metaKeywords} />
         <link rel="canonical" href="https://www.derivetech.com/" />
       </Head>
-      <p>HAHAHAHAHA</p>
 
       <Layout>
         {pageData?.section.map((item) => {
