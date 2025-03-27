@@ -10,24 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the code
+      # Step 1: Check out the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up SSH
+      # Step 2: Set up SSH for connection to VM
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       # Step 3: Deploy to GCP VM
-      - name: Deploy to VM
+      - name: Deploy to GCP VM
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} << 'EOF'
-          # Navigate to the app directory
-          cd derive-tech-app
+          # Navigate directly to the derive-tech-app folder
+          cd ~/derive-tech-app
 
-          # Pull latest changes from Git
+          # Pull the latest changes from the repository
           git pull origin main
 
           # Install dependencies
@@ -36,9 +36,9 @@ jobs:
           # Build the app
           npm run build
 
-          # Start or reload the app
+          # Start or reload the app using PM2
           pm2 reload app || pm2 start npm --name "app" -- start
           EOF
-    env:
-      VM_IP: ${{ secrets.VM_IP }}
-      VM_USER: ${{ secrets.VM_USER }}
+        env:
+          VM_IP: ${{ secrets.VM_IP }}
+          VM_USER: ${{ secrets.VM_USER }}
