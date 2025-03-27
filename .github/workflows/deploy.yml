@@ -30,6 +30,8 @@ jobs:
         run: |
           ./google-cloud-sdk/bin/gcloud compute ssh fausto@derive-app-staging --zone=us-central1-f --command "
           cd derive-tech-app
+          rm -fr .next
+          rm -fr .env
           git config --global credential.helper store
           git pull https://estesfausto:${{ secrets.GITHUB_PAT }}@github.com/estesfausto/derive-tech-app.git master
           npm install
