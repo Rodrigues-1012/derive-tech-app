@@ -19,6 +19,13 @@ jobs:
           credentials_json: "${{ secrets.GCP_SA_KEY }}"
           project_id: ${{ env.PROJECT_ID }}
 
+      - name: Set Up Google Cloud CLI
+        run: |
+          curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-419.0.0-linux-x86_64.tar.gz
+          tar -xvf google-cloud-cli-419.0.0-linux-x86_64.tar.gz
+          ./google-cloud-sdk/install.sh
+          ./google-cloud-sdk/bin/gcloud --version
+
       - name: Deploy Application
         run: |
           ./google-cloud-sdk/bin/gcloud compute ssh fausto@derive-web-staging --zone=us-central1-f --command "
