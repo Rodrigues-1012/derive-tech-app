@@ -1,44 +1,41 @@
-name: Deploy to GCP VM
+name: CI/CD Deployment to GCP VM
 
 on:
   push:
     branches:
-      - master
+      - master # Trigger on pushes to the main branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the repository
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Ensure the full commit history is fetched
 
-      # Step 2: Set up SSH for connection to VM
-      - name: Set up SSH
+      - name: Start SSH Agent
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      # Step 3: Deploy to GCP VM
-      - name: Deploy to GCP VM
+      - name: Provide SSH Passphrase
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} << 'EOF'
-          # Navigate directly to the derive-tech-app folder
-          cd ~/derive-tech-app
-
-          # Pull the latest changes from the repository
-          git pull origin main
-
-          # Install dependencies
-          npm install
-
-          # Build the app
-          npm run build
-
-          # Start or reload the app using PM2
-          pm2 reload app || pm2 start npm --name "app" -- start
-          EOF
+          echo "${{ secrets.SSH_PASSPHRASE }}" | ssh-add -
         env:
-          VM_IP: ${{ secrets.VM_IP }}
-          VM_USER: ${{ secrets.VM_USER }}
+          SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
+
+      - name: Verify SSH Agent
+        run: ssh-add -l # Verifies the private key is loaded correctly
+
+      - name: Deploy Application to VM
+        run: |
+          ssh -o StrictHostKeyChecking=no username@your-vm-ip << EOF
+          set -e  # Exit immediately if a command exits with a non-zero status
+          cd derive-tech-app  # Navigate to your project directory
+          git pull origin main  # Pull the latest code from the repository
+          npm install  # Install dependencies
+          npm run build  # Build your application
+          pm2 restart process_name  # Restart your application using PM2
+          EOF
