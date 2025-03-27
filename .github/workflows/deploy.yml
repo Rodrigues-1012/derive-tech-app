@@ -3,7 +3,7 @@ name: CI/CD Deployment to GCP VM
 on:
   push:
     branches:
-      - master # Triggder the workflow on pushes #to the main branch
+      - master # Triggderf the workflow on pushes #to the main branch
 
 jobs:
   deploy:
