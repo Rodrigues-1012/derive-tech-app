@@ -29,12 +29,12 @@ jobs:
       - name: Deploy Application
         run: |
           ./google-cloud-sdk/bin/gcloud compute ssh fausto@derive-web-staging --zone=us-central1-f --command "
+          mkdir -p ~/.ssh
           echo '${{ secrets.SSH_PRIVATE_KEY }}' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          echo '${{ secrets.SSH_PASSPHRASE }}' > ~/.ssh/passphrase
-          chmod 600 ~/.ssh/passphrase
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
           cd derive-tech-app
-          git pull origin main
+          git pull origin main || echo 'Failed to authenticate via SSH. Check your key configuration.'
           npm install
           npm run build
           pm2 start npm --name 'latest-derive' -- start
