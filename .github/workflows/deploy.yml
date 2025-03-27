@@ -14,45 +14,29 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Node.js for testing and building
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
-
-      # Step 3: Install dependencies and build the app
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build application
-        run: npm run build
-
-      # Step 4: Set up SSH
+      # Step 2: Set up SSH
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      # Step 5: Deploy to GCP VM
+      # Step 3: Deploy to GCP VM
       - name: Deploy to VM
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} << 'EOF'
-          # Navigate to the app directory (create if it doesn’t exist)
-          mkdir -p /home/${{ secrets.VM_USER }}/nextjs-app && cd /home/${{ secrets.VM_USER }}/nextjs-app
+          # Navigate to the app directory
+          cd derive-tech-app
 
-          # Pull the latest changes from the repository
-          git init
-          git remote add origin git@github.com:estesfausto/derive-tech-app.git || true
-          git fetch origin
-          git reset --hard origin/main
+          # Pull latest changes from Git
+          git pull origin main
 
-          # Install Node.js dependencies
+          # Install dependencies
           npm install
 
-          # Build the application
+          # Build the app
           npm run build
 
-          # Start or reload the app using PM2
+          # Start or reload the app
           pm2 reload app || pm2 start npm --name "app" -- start
           EOF
     env:
