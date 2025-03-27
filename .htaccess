@@ -8,40 +8,40 @@ RewriteRule ^(.\*)?$ http://127.0.0.1:3040/$1 [P,L]
 
 ## Ensure all non-canonical versions of your homepage
 
-RewriteCond %{HTTP_HOST} ^derivetech\.com [NC]
-RewriteRule ^(.\*)$ https://www.derivetech.com/$1 [L,R=301]
+# RewriteCond %{HTTP_HOST} ^derivetech\.com [NC]
+# RewriteRule ^(.\*)$ https://www.derivetech.com/$1 [L,R=301]
 
-RewriteCond %{HTTPS} off
-RewriteRule ^(.\*)$ https://www.derivetech.com/$1 [L,R=301]
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.\*)$ https://www.derivetech.com/$1 [L,R=301]
 
-##CACHE
-<IfModule mod_expires.c>
-ExpiresActive On
-ExpiresDefault "access plus 1 year"
+# ##CACHE
+# <IfModule mod_expires.c>
+# ExpiresActive On
+# ExpiresDefault "access plus 1 year"
 
-    # Cache common static file types for a longer period
-    ExpiresByType text/html "access plus 1 year"
-    ExpiresByType image/x-icon "access plus 1 year"
-    ExpiresByType image/gif "access plus 1 year"
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType text/css "access plus 1 year"
-    ExpiresByType text/javascript "access plus 1 year"
-    ExpiresByType application/x-javascript "access plus 1 year"
+#     # Cache common static file types for a longer period
+#     ExpiresByType text/html "access plus 1 year"
+#     ExpiresByType image/x-icon "access plus 1 year"
+#     ExpiresByType image/gif "access plus 1 year"
+#     ExpiresByType image/jpeg "access plus 1 year"
+#     ExpiresByType image/png "access plus 1 year"
+#     ExpiresByType text/css "access plus 1 year"
+#     ExpiresByType text/javascript "access plus 1 year"
+#     ExpiresByType application/x-javascript "access plus 1 year"
 
-    # Set Cache-Control headers for dynamic content
-    <FilesMatch "\.(php|cgi|pl|htm)$">
-        ExpiresDefault "access plus 1 hour"
-        Header set Cache-Control "public, must-revalidate"
-    </FilesMatch>
+#     # Set Cache-Control headers for dynamic content
+#     <FilesMatch "\.(php|cgi|pl|htm)$">
+#         ExpiresDefault "access plus 1 hour"
+#         Header set Cache-Control "public, must-revalidate"
+#     </FilesMatch>
 
-    # Set Cache-Control headers for other static file types
-    <FilesMatch "\.(ico|gif|jpe?g|png|css|js)$">
-        Header set Cache-Control "public"
-    </FilesMatch>
+#     # Set Cache-Control headers for other static file types
+#     <FilesMatch "\.(ico|gif|jpe?g|png|css|js)$">
+#         Header set Cache-Control "public"
+#     </FilesMatch>
 
-    # Disable caching for dynamic pages
-    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
-    Header set Pragma "no-cache"
+#     # Disable caching for dynamic pages
+#     Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+#     Header set Pragma "no-cache"
 
-</IfModule>
+# </IfModule>
