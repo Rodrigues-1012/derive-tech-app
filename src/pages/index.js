@@ -23,11 +23,15 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Derive Technologies |  {pageData?.metaTitle || "Enterprise IT Support & Services Provider"}</title>
+        <title>
+          Derive Technologies |{" "}
+          {pageData?.metaTitle || "Enterprise IT Support & Services Provider"}
+        </title>
         <meta name="description" content={pageData?.metaDescription} />
         <meta name="keywords" content={pageData?.metaKeywords} />
         <link rel="canonical" href="https://www.derivetech.com/" />
       </Head>
+      <p>HAHAHAHAHA</p>
 
       <Layout>
         {pageData?.section.map((item) => {
@@ -51,13 +55,27 @@ export default function Home() {
               );
 
             case "Partner":
-              return <PartnerTab key={item.id} data={item} baseUrl={pageData.baseUrl} />;
+              return (
+                <PartnerTab
+                  key={item.id}
+                  data={item}
+                  baseUrl={pageData.baseUrl}
+                />
+              );
 
             case "Blog":
-              return <BlogTab key={item.id} data={item} baseUrl={pageData.baseUrl} />;
+              return (
+                <BlogTab key={item.id} data={item} baseUrl={pageData.baseUrl} />
+              );
 
             case "Healthcare":
-              return <HealthcareTab key={item.id} data={item} baseUrl={pageData.baseUrl} />;
+              return (
+                <HealthcareTab
+                  key={item.id}
+                  data={item}
+                  baseUrl={pageData.baseUrl}
+                />
+              );
 
             case "SubscribeForm":
               return <SubscribeForm key={item.id} heading={item?.title} />;
