@@ -1,37 +1,33 @@
-name: CI/CD Deployment to GCP VM
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
-      - master # Triggderf the workflow on pushes #to the main branch
+      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      # Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set Up Google Cloud CLI
-        run: |
-          curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-419.0.0-linux-x86_64.tar.gz
-          tar -xvf google-cloud-cli-419.0.0-linux-x86_64.tar.gz
-          ./google-cloud-sdk/install.sh
-          ./google-cloud-sdk/bin/gcloud --version
+      # Set up GCP Credentials
+      - name: Set up GCP Credentials
+        run: echo "${{ secrets.GCLOUD_KEY_FILE }}" > key.json
 
-      - name: Authenticate with GCP
+      # Authenticate with GCP
+      - name: Authenticate GCP
         run: |
-          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" | base64 -d > gcp-key.json
-          ./google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=gcp-key.json
-          ./google-cloud-sdk/bin/gcloud config set project alpine-furnace-237115
+          gcloud auth activate-service-account --key-file=key.json
+          gcloud config set project alpine-furnace-237115
 
-      - name: Deploy Application
+      # Deploy Application
+      - name: Deploy to GCP VM
         run: |
-          ./google-cloud-sdk/bin/gcloud compute ssh fausto@alpine-furnace-237115 --command "
-          cd derive-tech-app
-          git pull origin main
-          npm install
-          npm run build
-          pm2 start npm --name "new-app" -- start
-          "
+          gcloud compute ssh fausto@34.42.230.190 --command "
+          cd derive-tech-app &&
+          git pull &&
+          pm2 restart all"
