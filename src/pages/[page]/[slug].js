@@ -1,41 +1,24 @@
-import React, { useEffect } from "react";
-import Head from "next/head";
-import { useQueryHooks } from "@/services/useCustomHooks";
+import axios from "axios";
+import { useEffect } from "react";
 
-import AccreditationTab from "@/components/AccreditationTab";
 import BlogTab from "@/components/BlogTab";
 
 import ConsulationForm from "@/components/Consultationform";
 import ContactForm from "@/components/ContactForm";
-import Layout from "@/components/Layout";
-import LeadershipTab from "@/components/LeadershipTab";
-import ListUITab from "@/components/ListUITab";
-import Loader from "@/components/Loader";
-import MainBanner from "@/components/MainBanner";
-import Milestone from "@/components/Milestone";
-import Not_Found from "@/components/Not_Found";
 import Content from "@/components/Content";
+import CustomMetadataHead from "@/components/CustomMetadataHead";
+import Layout from "@/components/Layout";
+import ListUITab from "@/components/ListUITab";
+import MainBanner from "@/components/MainBanner";
+import Not_Found from "@/components/Not_Found";
 import PartnerTab from "@/components/PartnerTab";
 import SocialTab from "@/components/SocialTab";
 import SubscribeForm from "@/components/SubscribeForm";
 import SubscribeTab from "@/components/SubscribeTab";
 import Tabs from "@/components/Tabs";
 import VerticalTab from "@/components/VerticalTab";
-import { data } from "jquery";
-import CustomMetadataHead from "@/components/CustomMetadataHead";
 
-const Slug = ({ page, slug }) => {
-  // console.log("slug", slug, page);
-
-  const {
-    isLoading,
-    data: slugData,
-    isError,
-  } = useQueryHooks(`page/${page}/${slug}`);
-
-  console.log("data:");
-  console.log(slugData);
-
+const Slug = ({ page, slugData }) => {
   const editedUrl = process.env.NEXT_PUBLIC_WEB_APP_URL + "/" + slugData?.route;
 
   useEffect(() => {
@@ -43,11 +26,7 @@ const Slug = ({ page, slug }) => {
       $(".text-scroll").mCustomScrollbar({ theme: "dark-thin" });
   }, [slugData]);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (isError) {
+  if (!slugData) {
     return <Not_Found />;
   }
 
@@ -171,8 +150,39 @@ const Slug = ({ page, slug }) => {
   );
 };
 
-Slug.getInitialProps = ({ query }) => {
-  return { page: query.page, slug: query.slug };
-};
+export async function getServerSideProps({ params }) {
+  const { page, slug } = params;
+
+
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}page/${page}/${slug}`,
+      {
+        headers: {
+          Apikey: "ca1e984376b1648ee77d7f5cefbcdd8171b40aab",
+          Accept: "application/json",
+        },
+      }
+    );
+
+    if (response.data.message === "Not found") {
+      return {
+        props: { notFound: false },
+      };
+    }
+
+    return {
+      props: {
+        page,
+        slug,
+        slugData: response.data.data,
+      },
+    };
+  } catch (error) {
+    return {
+      props: { notFound: true },
+    };
+  }
+}
 
 export default Slug;

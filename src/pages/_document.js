@@ -383,22 +383,22 @@ class CustomDocument extends Document {
           <NextScript />
 
           <script src="https://www.google.com/recaptcha/api.js?hl=en" />
-          <script src="/js/js.cookie.min.js" />
+          <script src="/js/js/js.cookie.min.js" />
 
           <script
             type="text/javascript"
             src="https://analytics.clickdimensions.com/ts.js"
           />
 
-          <script src="/js/jquery-3.3.1.min.js" />
-          <script src="/js/bootstrap.min.js" />
-          <script src="/js/wow.min.js" />
-          <script src="/js/jquery.mCustomScrollbar.js" />
-          <script src="/js/jquery.mousewheel.js" />
+          <script src="/js/js/jquery-3.3.1.min.js" />
+          <script src="/js/js/bootstrap.min.js" />
+          <script src="/js/js/wow.min.js" />
+          <script src="/js/js/jquery.mCustomScrollbar.js" />
+          <script src="/js/js/jquery.mousewheel.js" />
 
           <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-          <script src="/js/main.js" />
-          <script src="/js/menu.js" />
+          <script src="/js/js/main.js" />
+          <script src="/js/js/menu.js" />
 
           <script
             type="text/javascript"
