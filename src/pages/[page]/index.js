@@ -220,6 +220,6 @@ const Page = ({ slug }) => {
 // };
 
 Page.getInitialProps = ({ query }) => {
-  return { slug: query.page === "/" ? "home" : query.page };
+  return { slug: query.page === "/" || query.page === "" ? "home" : query.page };
 };
 export default Page;
