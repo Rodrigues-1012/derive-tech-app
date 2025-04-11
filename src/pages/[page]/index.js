@@ -25,17 +25,12 @@ import HomeBanner from "@/components/HomeBanner";
 import HealthcareTab from "@/components/HealthcareTab";
 
 const Page = ({ slug }) => {
-  console.log("[page] index log")
-  const pageToQuery = `page/${slug || "home"}`
-  console.log({pageToQuery})
   const {
     isLoading,
     data: pageData,
     isError,
     error,
   } = useQueryHooks(pageToQuery);
-
-
 
   useEffect(() => {
     $(window).outerWidth() > 767 &&
@@ -225,6 +220,6 @@ const Page = ({ slug }) => {
 // };
 
 Page.getInitialProps = ({ query }) => {
-  return { slug: query.page === "/" || query.page === "" ? "home" : query.page };
+  return { slug: query.page === "/" || query.page === "" || query.page === "index.php" ? "home" : query.page };
 };
 export default Page;

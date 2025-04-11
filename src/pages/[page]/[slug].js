@@ -21,8 +21,6 @@ import VerticalTab from "@/components/VerticalTab";
 const Slug = ({ page, slugData }) => {
   const editedUrl = process.env.NEXT_PUBLIC_WEB_APP_URL + "/" + slugData?.route;
 
-  console.log({ slugData });
-
   useEffect(() => {
     $(window).outerWidth() > 767 &&
       $(".text-scroll").mCustomScrollbar({ theme: "dark-thin" });
