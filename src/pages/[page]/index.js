@@ -30,7 +30,7 @@ const Page = ({ slug }) => {
     data: pageData,
     isError,
     error,
-  } = useQueryHooks(pageToQuery);
+  } = useQueryHooks(`page/${slug || "home"}`);
 
   useEffect(() => {
     $(window).outerWidth() > 767 &&
