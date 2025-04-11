@@ -15,6 +15,7 @@ export default function Home() {
   const { isLoading, data: pageData } = useQueryHooks("page/home");
 
   // console.log(" main pageData", pageData);
+  console.log("main page log")
 
   if (isLoading) {
     return <Loader />;

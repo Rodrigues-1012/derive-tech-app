@@ -25,12 +25,17 @@ import HomeBanner from "@/components/HomeBanner";
 import HealthcareTab from "@/components/HealthcareTab";
 
 const Page = ({ slug }) => {
+  console.log("[page] index log")
+  const pageToQuery = `page/${slug || "home"}`
+  console.log({pageToQuery})
   const {
     isLoading,
     data: pageData,
     isError,
     error,
-  } = useQueryHooks(`page/${slug || "home"}`);
+  } = useQueryHooks(pageToQuery);
+
+
 
   useEffect(() => {
     $(window).outerWidth() > 767 &&
