@@ -78,24 +78,29 @@ export default function Home({ pageData }) {
   );
 }
 
-export async function getServerSideProps() {
+const revalidate = 1000;
+
+export async function getStaticProps() {
   try {
     const response = await fetchApi(`page/home`, undefined, undefined, true);
 
     if (response.data.message === "Not found") {
       return {
         props: { notFound: false },
+        revalidate,
       };
     }
 
     return {
       props: {
         pageData: response.data.data,
+        revalidate,
       },
     };
   } catch (error) {
     return {
       props: { notFound: true },
+      revalidate,
     };
   }
 }

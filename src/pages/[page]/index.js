@@ -28,8 +28,6 @@ const Page = ({ slug, pageData }) => {
       $(".text-scroll").mCustomScrollbar({ theme: "dark-thin" });
   }, [pageData]);
 
-  console.log({ pageData });
-
   return (
     <>
       <Head>
