@@ -30,6 +30,8 @@ const Slug = ({ page, slugData }) => {
     return <Not_Found />;
   }
 
+  console.log({slugData});
+
   return (
     <>
       <CustomMetadataHead

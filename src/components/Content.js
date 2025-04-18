@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Slider from "react-slick";
 
 function NextArrow({ onClick }) {
   return (
@@ -78,6 +78,13 @@ const Content = ({ data, baseUrl, route }) => {
   const [leadershipList, setLeadershipList] = useState([]);
 
   const [select, setSelect] = useState(null);
+
+  const [isBigScreen, setIsBigScreen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setIsBigScreen(window.innerWidth > 992);
+  }, []);
 
   useEffect(() => {
     // if (query.page === "contact") {
@@ -277,9 +284,7 @@ const Content = ({ data, baseUrl, route }) => {
           <div className="accreditation-slider wow fadeInUp ">
             <div
               className={
-                window.innerWidth > 992
-                  ? "d-flex justify-content-center flex-wrap"
-                  : ""
+                isBigScreen ? "d-flex justify-content-center flex-wrap" : ""
               }
             >
               <Slider
