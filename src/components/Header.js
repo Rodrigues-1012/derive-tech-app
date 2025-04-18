@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { useState } from "react";
-import Loader from "./Loader";
 import { useQueryHooks } from "@/services/useCustomHooks";
-import { useRouter } from "next/router";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 const Header = () => {
   const { asPath } = useRouter();
@@ -43,7 +42,7 @@ const Header = () => {
           </Link>
           <nav className={`header-nav ${toggleMenu ? "show" : ""}`}>
             <Image
-              src="/img/DeriveLogo_White.png"
+              src="/assets/img/DeriveLogo_White.png"
               alt=""
               className="header-nav-logo"
               width={187}

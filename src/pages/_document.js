@@ -26,7 +26,7 @@
 //             name="og:description"
 //             content="Derive Tech has been helping businesses achieve their IT architecture, application virtualization, and healthcare cybersecurity for over 20 years."
 //           />
-//           <meta name="og:image" content="../../public/img/logo.png" />
+//           <meta name="og:image" content="../../public/assets/img/logo.png" />
 //           <meta name="twitter:card" content="summary_large_image" />
 //           <meta name="twitter:domain" content="derivetech.com" />
 //           <meta name="twitter:url" content="https://derivetech.com/" />
@@ -38,7 +38,7 @@
 //             name="twitter:description"
 //             content="Derive Tech has been helping businesses achieve their IT architecture, application virtualization, and healthcare cybersecurity for over 20 years."
 //           />
-//           <meta name="twitter:image" content="../../public/img/logo.png" />
+//           <meta name="twitter:image" content="../../public/assets/img/logo.png" />
 
 //           {/* <meta name="twitter:title" content="Purchase Contract Vehicles" /> */}
 
@@ -146,10 +146,7 @@
 // export default CustomDocument;
 
 /* eslint-disable @next/next/no-sync-scripts */
-import { Children } from "react";
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import Script from "next/script";
-import { useRouter } from "next/router";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
 class CustomDocument extends Document {
   render() {

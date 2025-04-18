@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const ListUITab = ({ data, baseUrl, page }) => {
   const [selectData, setSelectData] = useState(null);
@@ -32,7 +32,7 @@ const ListUITab = ({ data, baseUrl, page }) => {
       <div className="section-title">
         <h2 className="wow flipInX">{data?.title}</h2>
         <img
-          src="/img/title-line.png"
+          src="/assets/img/title-line.png"
           alt=""
           className="section-title-line wow fadeInLeft"
           width={718}

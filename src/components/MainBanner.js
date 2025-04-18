@@ -1,5 +1,3 @@
-import React from "react";
-
 const MainBanner = ({ data, baseUrl }) => {
   return (
     <div className={`banner banner--page`}>
@@ -31,7 +29,9 @@ const MainBanner = ({ data, baseUrl }) => {
             : "fadeInLeft"
         }`}
         src={
-          data?.anchor === "reverse" ? "/img/decor-11.png" : "/img/decor-1.png"
+          data?.anchor === "reverse"
+            ? "/assets/img/decor-11.png"
+            : "/assets/img/decor-1.png"
         }
         alt=""
         width={30}

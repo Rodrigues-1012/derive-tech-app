@@ -1,6 +1,5 @@
-import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 const HomeBanner = ({ data, baseUrl }) => {
   return (
@@ -37,7 +36,7 @@ const HomeBanner = ({ data, baseUrl }) => {
       </div>
       <div className="banner-decor wow fadeInLeft">
         <Image
-          src="/img/decor-1.png"
+          src="/assets/img/decor-1.png"
           alt=""
           data-wow-offset="300"
           layout="fill"

@@ -1,6 +1,5 @@
-import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 const HealthcareTab = ({ data, baseUrl }) => {
   return (
@@ -8,7 +7,7 @@ const HealthcareTab = ({ data, baseUrl }) => {
       <div className="section-title section-title--white">
         <h2 className="wow flipInX">{data?.title}</h2>
         <Image
-          src="/img/title-line-white.png"
+          src="/assets/img/title-line-white.png"
           alt=""
           className="section-title-line wow fadeInLeft"
           data-wow-duration="1.2s"
@@ -48,7 +47,7 @@ const HealthcareTab = ({ data, baseUrl }) => {
         </div>
       </div>
       <Image
-        src={`/img/decor-2.png`}
+        src={`/assets/img/decor-2.png`}
         alt=""
         className="healthcare-decor healthcare-decor--top wow fadeInDown"
         data-wow-duration="1.9s"
@@ -58,7 +57,7 @@ const HealthcareTab = ({ data, baseUrl }) => {
         height={447}
       />
       <Image
-        src="/img/decor-3.png"
+        src="/assets/img/decor-3.png"
         alt=""
         loading={"lazy"}
         className="healthcare-decor healthcare-decor--bottom wow fadeInUp"

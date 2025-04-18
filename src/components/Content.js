@@ -437,19 +437,19 @@ const Content = ({ data, baseUrl, route }) => {
             </div> */}
 
             <Image
-              src="/img/map-frame-top.png"
+              src="/assets/img/map-frame-top.png"
               alt=""
               layout="fill"
               className="contact-map-frame contact-map-frame--top d-none d-md-block"
             />
             <Image
-              src="/img/map-frame-bottom.png"
+              src="/assets/img/map-frame-bottom.png"
               alt=""
               layout="fill"
               className="contact-map-frame contact-map-frame--bottom d-none d-md-block"
             />
             <Image
-              src="/img/map-frame-left.png"
+              src="/assets/img/map-frame-left.png"
               alt=""
               layout="fill"
               className="contact-map-frame contact-map-frame--left d-none d-md-block"

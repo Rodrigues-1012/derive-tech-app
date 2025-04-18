@@ -1,12 +1,7 @@
+import { fetchApi } from "@/services/api";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { fetchApi } from "@/services/api";
-import RECAPTCHA from "react-google-recaptcha";
-import { useRef } from "react";
 
-import axios from "axios";
-import { useRouter } from "next/router";
-import Script from "next/script";
 import dynamic from "next/dynamic";
 
 const Form = ({ styles }) => {
@@ -270,7 +265,7 @@ const ContactForm = ({ data }) => {
           <div className="section-title section-title--white">
             <h2 className="wow flipInX">{data?.title}</h2>
             <img
-              src="/img/title-line-white.png"
+              src="/assets/img/title-line-white.png"
               alt=""
               className="section-title-line wow fadeInLeft"
               width={480}
@@ -282,7 +277,7 @@ const ContactForm = ({ data }) => {
               <div className="row justify-content-center justify-content-xl-between align-items-center">
                 <div className="col-sm-7 col-xl-7">
                   <img
-                    src="/img/contact-img.png"
+                    src="/assets/img/contact-img.png"
                     alt=""
                     className="contact-image wow zoomIn"
                     layout="fill"
@@ -296,18 +291,6 @@ const ContactForm = ({ data }) => {
               </div>
             </div>
           </div>
-          <img
-            src="https://www.derivetech.com/uploads/img/decor-2.png"
-            alt=""
-            className="contact-decor contact-decor--top wow fadeInDown"
-            layout="fill"
-          />
-          <img
-            src="https://www.derivetech.com/uploads/img/decor-10.png"
-            alt=""
-            className="contact-decor contact-decor--bottom wow fadeIn"
-            layout="fill"
-          />
         </div>
       </div>
     );

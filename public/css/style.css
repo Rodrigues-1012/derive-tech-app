@@ -55,6 +55,17 @@ section {
     display: block
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
 
 body {
     margin: 0;
@@ -19109,7 +19120,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
-    background: url(../img/sixtangle-2.png) no-repeat 50% 50%;
+    background: url(../assets/img/sixtangle-2.png) no-repeat 50% 50%;
     background-size: 100% 100%;
     font-weight: 700;
     font-size: 1rem;
@@ -19193,7 +19204,7 @@ a:hover {
     top: 0;
     width: 3.4375rem;
     height: 1.625rem;
-    background: url(../img/services-mark.png) no-repeat 0 0;
+    background: url(../assets/img/services-mark.png) no-repeat 0 0;
     background-size: 100% auto;
     z-index: 2
 }
@@ -19417,7 +19428,7 @@ a:hover {
     position: absolute;
     width: 8.9375rem;
     height: 8.3125rem;
-    background: url(../img/quote.png) no-repeat 0 0;
+    background: url(../assets/img/quote.png) no-repeat 0 0;
     background-size: 100% 100%;
     top: -3.4375rem
 }
@@ -19483,7 +19494,7 @@ a:hover {
     top: 0;
     height: 100%;
     width: 24.375rem;
-    background: url(../img/subscribe-decor.png) no-repeat 0 0;
+    background: url(../assets/img/subscribe-decor.png) no-repeat 0 0;
     background-size: 100% 100%;
     margin: 0 1.25rem 0 0
 }
@@ -19631,7 +19642,7 @@ a:hover {
     position: absolute;
     width: 7.1875rem;
     height: 6.6875rem;
-    background: url(../img/date.png) no-repeat 0 0;
+    background: url(../assets/img/date.png) no-repeat 0 0;
     background-size: 100% 100%;
     bottom: -1.625rem;
     left: -2.3125rem;
@@ -19828,7 +19839,7 @@ a:hover {
     position: absolute;
     width: 8.9375rem;
     height: 8.3125rem;
-    background: url(../img/date.png) no-repeat 0 0;
+    background: url(../assets/img/date.png) no-repeat 0 0;
     background-size: 100% 100%;
     top: -3.25rem;
     left: -4rem;
@@ -19985,7 +19996,7 @@ a:hover {
     position: absolute;
     left: -3rem;
     bottom: .375rem;
-    background: url(../img/title-bg.png) no-repeat;
+    background: url(../assets/img/title-bg.png) no-repeat;
     background-size: 100% 100%;
     padding: .625rem 3.125rem 2rem 3rem;
     line-height: 4.4375rem;
@@ -20159,7 +20170,7 @@ a:hover {
     width: 23.9375rem;
     height: 22rem;
     padding: 1.4375rem 2.9375rem 4.9375rem;
-    background: url(../img/sixtangle-3.png) no-repeat;
+    background: url(../assets/img/sixtangle-3.png) no-repeat;
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
@@ -20316,7 +20327,7 @@ a:hover {
     width: 23.9375rem;
     height: 22rem;
     padding: 1.4375rem 2.9375rem 4.9375rem;
-    background: url(../img/sixtangle-3.png) no-repeat;
+    background: url(../assets/img/sixtangle-3.png) no-repeat;
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
@@ -20598,7 +20609,7 @@ a:hover {
     transform: translateY(-50%);
     width: 13.625rem;
     height: 26.5rem;
-    background: url(../img/book-decor.png) no-repeat 0 0;
+    background: url(../assets/img/book-decor.png) no-repeat 0 0;
     background-size: 100% 100%
 }
 
@@ -20830,7 +20841,7 @@ a:hover {
 }
 
 .block--reverse .block-frame {
-    background: url(../img/block-frame-2.png) no-repeat 50% 50%;
+    background: url(../assets/img/block-frame-2.png) no-repeat 50% 50%;
     background-size: 100% 100%
 }
 
@@ -20880,7 +20891,7 @@ a:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background: url(../img/block-frame.png) no-repeat 50% 50%;
+    background: url(../assets/img/block-frame.png) no-repeat 50% 50%;
     background-size: 100% 100%;
     z-index: 2
 }
@@ -21158,7 +21169,7 @@ a:hover {
 }
 
 .key-milestones-item {
-    background: url(../img/sixtangle-4.png) no-repeat;
+    background: url(../assets/img/sixtangle-4.png) no-repeat;
     background-size: 100% 100%;
     width: 18.375rem;
     height: 18rem;
@@ -21241,7 +21252,7 @@ a:hover {
     width: 23.9375rem;
     height: 22rem;
     padding: 1.4375rem 2.9375rem 4.9375rem;
-    background: url(../img/sixtangle-3.png) no-repeat;
+    background: url(../assets/img/sixtangle-3.png) no-repeat;
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
@@ -21724,7 +21735,7 @@ a:hover {
 
 .form .custom-select {
     background-color: #fff;
-    background-image: url(../img/select-arrow.png);
+    background-image: url(../assets/img/select-arrow.png);
     background-repeat: no-repeat;
     background-position: right .5rem center;
     background-size: 1rem auto;
@@ -22162,7 +22173,7 @@ a:hover {
     padding: .125rem 1.3125rem 3rem;
     margin: 2.875rem .3125rem 0 0;
     flex-shrink: 0;
-    background: url(../img/sixtangle-6.png) no-repeat;
+    background: url(../assets/img/sixtangle-6.png) no-repeat;
     background-size: contain
 }
 
@@ -22294,7 +22305,7 @@ a:hover {
     width: 30.9375rem;
     height: 28.9375rem;
     padding: 1.875rem 4.6875rem 8.875rem;
-    background: url(../img/sixtangle-7.png) no-repeat;
+    background: url(../assets/img/sixtangle-7.png) no-repeat;
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
@@ -22498,7 +22509,7 @@ a:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background: url(../img/verticals-frame.png) no-repeat;
+    background: url(../assets/img/verticals-frame.png) no-repeat;
     background-size: 100% 100%;
     z-index: 2
 }
@@ -22660,7 +22671,7 @@ a:hover {
 
 .verticals-list .item-shadow {
     content: "";
-    background: url(../img/sixtangle-9-shadow.png) no-repeat;
+    background: url(../assets/img/sixtangle-9-shadow.png) no-repeat;
     background-size: 100% 100%;
     top: -.625rem;
     width: 32.375rem;
@@ -22754,7 +22765,7 @@ a:hover {
     top: 0;
     height: 100%;
     width: 100%;
-    background: url(../img/verticals-mask.png) no-repeat;
+    background: url(../assets/img/verticals-mask.png) no-repeat;
     background-size: 100% 100%;
     color: #fff;
     font-size: .9375rem;
@@ -22809,7 +22820,7 @@ a:hover {
 
 .verticals-list-item:before {
     content: "";
-    background: url("/img/verticals/sixtangle-shadow.png") no-repeat;
+    background: url("/assets/img/verticals/sixtangle-shadow.png") no-repeat;
     background-size: 100% 100%;
     top: -.625rem;
     width: 32.375rem;
@@ -22865,7 +22876,7 @@ a:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background: url("/img/verticals/verticals-mask.png") no-repeat;
+    background: url("/assets/img/verticals/verticals-mask.png") no-repeat;
     background-size: 100% 100%;
     color: #fff;
     font-size: .9375rem;
@@ -23091,7 +23102,7 @@ a:hover {
 
 .leaderboard .item-shadow {
     content: "";
-    background: url(../img/sixtangle-8-shadow.png) no-repeat;
+    background: url(../assets/img/sixtangle-8-shadow.png) no-repeat;
     background-size: 100% 100%;
     top: -.625rem;
     width: 25.5rem;
@@ -23352,7 +23363,7 @@ a:hover {
     height: 1.125rem;
     overflow: hidden;
     text-indent: -999px;
-    background: url(../img/close.png) no-repeat 50% 50%;
+    background: url(../assets/img/close.png) no-repeat 50% 50%;
     background-size: contain;
     padding: 0;
     opacity: 1;
@@ -23472,7 +23483,7 @@ a:hover {
     position: absolute;
     width: 7.1875rem;
     height: 6.6875rem;
-    background: url(../img/date.png) no-repeat 0 0;
+    background: url(../assets/img/date.png) no-repeat 0 0;
     background-size: 100% 100%;
     bottom: -1.625rem;
     left: -2.3125rem;
@@ -23552,7 +23563,7 @@ a:hover {
 
 .testimonials-avatar-shadow {
     content: "";
-    background: url(../img/sixtangle-3.png) no-repeat;
+    background: url(../assets/img/sixtangle-3.png) no-repeat;
     background-size: 100% 100%;
     top: -.6875rem;
     width: 8.1875rem;
@@ -23742,7 +23753,7 @@ a:hover {
     position: absolute;
     width: 8.9375rem;
     height: 8.3125rem;
-    background: url(../img/date.png) no-repeat 0 0;
+    background: url(../assets/img/date.png) no-repeat 0 0;
     background-size: 100% 100%;
     top: -3.25rem;
     left: -4rem;
@@ -23899,7 +23910,7 @@ a:hover {
     position: absolute;
     left: -3rem;
     bottom: .375rem;
-    background: url(../img/title-bg.png) no-repeat;
+    background: url(../assets/img/title-bg.png) no-repeat;
     background-size: 100% 100%;
     padding: .625rem 3.125rem 2rem 3rem;
     line-height: 4.4375rem;

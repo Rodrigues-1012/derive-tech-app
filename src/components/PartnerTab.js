@@ -211,7 +211,7 @@ const ListTab = ({ data, baseUrl }) => {
       <div className="section-title section-title">
         <h2 className="wow flipInX">{data?.title}</h2>
         <Image
-          src={`/img/title-line.png`}
+          src={`/assets/img/title-line.png`}
           alt=""
           className="section-title-line wow fadeInLeft"
           data-wow-duration="1.2s"

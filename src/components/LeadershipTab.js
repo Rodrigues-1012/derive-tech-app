@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const LeadershipTab = ({ data, baseUrl }) => {
   const [select, setSelect] = useState(null);
@@ -113,7 +113,7 @@ const LeadershipTab = ({ data, baseUrl }) => {
                     </div>
                   </div>
                   <img
-                    src="/img/decor-1.png"
+                    src="/assets/img/decor-1.png"
                     alt=""
                     className="leaderboard-popup-decor"
                     layout="fill"

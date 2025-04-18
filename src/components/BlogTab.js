@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Slider from "react-slick";
 
 function NextArrow({ onClick }) {
   return (
@@ -89,12 +89,14 @@ const BlogTab = ({ data, baseUrl }) => {
                     <div key={item.id} className="blog-item wow fadeInUp">
                       <div className="blog-item-image">
                         <Link
-                          href={`/${data?.anchor}/${item.slug}`}
+                          href={`${data?.anchor}/${item.slug}`}
                           className="blog-item-img"
                           style={{
                             backgroundImage: `url(${baseUrl}/${item.image})`,
                           }}
-                        />
+                        >
+                          <span class="sr-only">{item?.title}</span>
+                        </Link>
                         {/* <div className="blog-item-date">
                           {date.getUTCDate() > 9
                             ? date.getUTCDate()
@@ -107,7 +109,7 @@ const BlogTab = ({ data, baseUrl }) => {
                       </div>
                       <div className="blog-item-inner">
                         <h2>
-                          <Link href={`/${data?.anchor}/${item.slug}`}>
+                          <Link href={`${data?.anchor}/${item.slug}`}>
                             {item.title}
                           </Link>
                         </h2>
@@ -125,7 +127,7 @@ const BlogTab = ({ data, baseUrl }) => {
                         <br />
                         <br />
                         <Link
-                          href={`/${data?.anchor}/${item.slug}`}
+                          href={`${data?.anchor}/${item.slug}`}
                           className="btn btn--gradient btn--shadow"
                         >
                           learn more
@@ -165,7 +167,7 @@ const BlogTab = ({ data, baseUrl }) => {
         <h2 className="wow flipInX">{data?.title}</h2>
 
         <img
-          src="/img/title-line.png"
+          src="/assets/img/title-line.png"
           alt=""
           className="section-title-line wow fadeInLeft"
           width={480}
@@ -189,9 +191,9 @@ const BlogTab = ({ data, baseUrl }) => {
             let date = new Date(item.created_at);
             return (
               <div
-                key={item.id}
                 className="item wow zoomIn slick-initialized slick-slider"
                 style={{ width: 807 }}
+                key={item.slug}
               >
                 <div className="blog-slide">
                   {/* <div className="blog-slide-mark">
