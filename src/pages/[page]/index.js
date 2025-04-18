@@ -13,6 +13,7 @@ import LeadershipTab from "@/components/LeadershipTab";
 import ListUITab from "@/components/ListUITab";
 import MainBanner from "@/components/MainBanner";
 import Milestone from "@/components/Milestone";
+import Not_Found from "@/components/Not_Found";
 import PartnerTab from "@/components/PartnerTab";
 import SocialTab from "@/components/SocialTab";
 import SolutionBrief from "@/components/SolutionBrief";
@@ -27,6 +28,10 @@ const Page = ({ slug, pageData }) => {
     $(window).outerWidth() > 767 &&
       $(".text-scroll").mCustomScrollbar({ theme: "dark-thin" });
   }, [pageData]);
+
+  if (!pageData) {
+    return <Not_Found />;
+  }
 
   return (
     <>
