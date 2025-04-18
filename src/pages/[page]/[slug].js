@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect } from "react";
 
 import BlogTab from "@/components/BlogTab";
@@ -17,6 +16,7 @@ import SubscribeForm from "@/components/SubscribeForm";
 import SubscribeTab from "@/components/SubscribeTab";
 import Tabs from "@/components/Tabs";
 import VerticalTab from "@/components/VerticalTab";
+import { fetchApi } from "@/services/api";
 
 const Slug = ({ page, slugData }) => {
   const editedUrl = process.env.NEXT_PUBLIC_WEB_APP_URL + "/" + slugData?.route;
@@ -154,15 +154,7 @@ export async function getServerSideProps({ params }) {
   const { page, slug } = params;
 
   try {
-    const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}page/${page}/${slug}`,
-      {
-        headers: {
-          Apikey: "ca1e984376b1648ee77d7f5cefbcdd8171b40aab",
-          Accept: "application/json",
-        },
-      }
-    );
+    const response = await fetchApi(`page/${page}/${slug}`, undefined, undefined, true);
 
     if (response.data.message === "Not found") {
       return {

@@ -17,18 +17,12 @@ export const fetchApi = async function (
   // }
 
   if (!headers || Object.keys(headers).length === 0) {
-    headers = { "Accept": "application/json" };
+    headers = { Accept: "application/json" };
   } else if (headers === 1) {
     headers = {};
   }
 
   if (auth === true) {
-    const isServer = typeof window === "undefined";
-    if (!isServer) {
-      var token1 = await localStorage.getItem("access_token");
-    }
-    var token = JSON.parse(token1);
-
     headers["Apikey"] = "ca1e984376b1648ee77d7f5cefbcdd8171b40aab";
   }
   const axiosConfig = {

@@ -2,7 +2,7 @@ import Head from "next/head";
 
 const CustomMetadataHead = ({ title, description, keywords, image, url }) => (
   <Head>
-    <title>{title}</title>
+    <title>{title?.slice(0, 60)}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta property="og:title" content={title} />

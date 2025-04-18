@@ -1,23 +1,15 @@
 import Head from "next/head";
 
-import SubscribeForm from "@/components/SubscribeForm";
-import HealthcareTab from "@/components/HealthcareTab";
-import PartnerTab from "@/components/PartnerTab";
-import { useQueryHooks } from "@/services/useCustomHooks";
-import Loader from "@/components/Loader";
-import HomeBanner from "@/components/HomeBanner";
-import MainBanner from "@/components/MainBanner";
-import ListUITab from "@/components/ListUITab";
 import BlogTab from "@/components/BlogTab";
+import HealthcareTab from "@/components/HealthcareTab";
+import HomeBanner from "@/components/HomeBanner";
 import Layout from "@/components/Layout";
+import ListUITab from "@/components/ListUITab";
+import PartnerTab from "@/components/PartnerTab";
+import SubscribeForm from "@/components/SubscribeForm";
+import { fetchApi } from "@/services/api";
 
-export default function Home() {
-  const { isLoading, data: pageData } = useQueryHooks("page/home");
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
+export default function Home({ pageData }) {
   return (
     <>
       <Head>
@@ -84,4 +76,26 @@ export default function Home() {
       </Layout>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  try {
+    const response = await fetchApi(`page/home`, undefined, undefined, true);
+
+    if (response.data.message === "Not found") {
+      return {
+        props: { notFound: false },
+      };
+    }
+
+    return {
+      props: {
+        pageData: response.data.data,
+      },
+    };
+  } catch (error) {
+    return {
+      props: { notFound: true },
+    };
+  }
 }

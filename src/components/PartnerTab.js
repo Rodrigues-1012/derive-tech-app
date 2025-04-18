@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+import Slider from "react-slick";
 
 function NextArrow({ onClick }) {
   return (
@@ -26,6 +26,11 @@ const ListTab = ({ data, baseUrl }) => {
   const [partnersList, setPartnersList] = useState(data?.subSection);
   const [toggleShowMore, setToggleShowMore] = useState(false);
   const [count, setCount] = useState(8);
+  const [canRenderSlider, setCanRenderSlider] = useState(false);
+
+  useEffect(() => {
+    setCanRenderSlider(true);
+  }, []);
 
   useEffect(() => {
     $(".text-scroll").mCustomScrollbar({ theme: "dark-thin" });
@@ -92,6 +97,8 @@ const ListTab = ({ data, baseUrl }) => {
       },
     ],
   };
+
+  if (!canRenderSlider) return null;
 
   if (query.page === "partners" && !query.slug) {
     return (

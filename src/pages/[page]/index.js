@@ -1,4 +1,3 @@
-import { useQueryHooks } from "@/services/useCustomHooks";
 import Head from "next/head";
 
 import AccreditationTab from "@/components/AccreditationTab";
@@ -6,44 +5,30 @@ import BlogTab from "@/components/BlogTab";
 import CardList from "@/components/CardList";
 import ConsulationForm from "@/components/Consultationform";
 import ContactForm from "@/components/ContactForm";
+import Content from "@/components/Content";
+import HealthcareTab from "@/components/HealthcareTab";
+import HomeBanner from "@/components/HomeBanner";
 import Layout from "@/components/Layout";
 import LeadershipTab from "@/components/LeadershipTab";
 import ListUITab from "@/components/ListUITab";
-import Loader from "@/components/Loader";
 import MainBanner from "@/components/MainBanner";
 import Milestone from "@/components/Milestone";
-import Not_Found from "@/components/Not_Found";
-import Content from "@/components/Content";
 import PartnerTab from "@/components/PartnerTab";
 import SocialTab from "@/components/SocialTab";
 import SolutionBrief from "@/components/SolutionBrief";
 import SubscribeForm from "@/components/SubscribeForm";
 import Tabs from "@/components/Tabs";
 import VerticalTab from "@/components/VerticalTab";
+import { fetchApi } from "@/services/api";
 import { useEffect } from "react";
-import HomeBanner from "@/components/HomeBanner";
-import HealthcareTab from "@/components/HealthcareTab";
 
-const Page = ({ slug }) => {
-  const {
-    isLoading,
-    data: pageData,
-    isError,
-    error,
-  } = useQueryHooks(`page/${slug || "home"}`);
-
+const Page = ({ slug, pageData }) => {
   useEffect(() => {
     $(window).outerWidth() > 767 &&
       $(".text-scroll").mCustomScrollbar({ theme: "dark-thin" });
   }, [pageData]);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (isError) {
-    return <Not_Found />;
-  }
+  console.log({ pageData });
 
   return (
     <>
@@ -215,12 +200,33 @@ const Page = ({ slug }) => {
   );
 };
 
-// Page.getInitialProps = ({ query }) => {
-//   return { slug: query.page === "index.php" ? "home" : query.page };
-// };
+export async function getServerSideProps({ params }) {
+  const { page } = params;
 
-Page.getInitialProps = ({ query }) => {
-  console.log({query});
-  return { slug: query.page === "/" || query.page === "" || query.page === "index.php" ? "home" : query.page };
-};
+  const slug =
+    page === "/" || page === "" || page === "index.php" ? "home" : page;
+
+  try {
+    const response = await fetchApi(`page/${slug}`, undefined, undefined, true);
+
+    if (response.data.message === "Not found") {
+      return {
+        props: { notFound: false },
+      };
+    }
+
+    return {
+      props: {
+        page,
+        slug,
+        pageData: response?.data?.data ?? {},
+      },
+    };
+  } catch (error) {
+    return {
+      props: { notFound: true },
+    };
+  }
+}
+
 export default Page;
