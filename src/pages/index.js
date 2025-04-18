@@ -80,7 +80,7 @@ export default function Home({ pageData }) {
 
 const revalidate = 1000;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const response = await fetchApi(`page/home`, undefined, undefined, true);
 
