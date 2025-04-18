@@ -39,6 +39,10 @@ const Page = ({ slug, pageData }) => {
         <title>{pageData?.metaTitle || "Derivetech | Index - [Pages]"}</title>
         <meta name="description" content={pageData?.metaDescription} />
         <meta name="keywords" content={pageData?.metaKeywords} />
+        <link
+          rel="canonical"
+          href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/${slug}`}
+        />
       </Head>
 
       <Layout>
