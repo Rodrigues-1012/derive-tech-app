@@ -14,7 +14,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/_next/static/(.*)", // Matches any path inside /_next/static/
+        source: "/_next/static/:path*", // Matches any path inside /_next/static/
         headers: [
           {
             key: "Cache-Control",
@@ -23,7 +23,7 @@ const nextConfig = {
         ],
       },
       {
-        source: "/_next/static/css/(.*)", // Matches any path inside /_next/static/css/
+        source: "/js/js/:path*", // Matches any path inside /js/js/
         headers: [
           {
             key: "Cache-Control",
